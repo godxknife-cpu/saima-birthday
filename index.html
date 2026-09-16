@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Saima 🎂</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 * {
@@ -304,6 +305,30 @@ body::before {
     color: #777;
 }
 
+/* ---------- QR CODE ---------- */
+
+.qr-box {
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid #00ffff;
+    background: rgba(0,255,255,.05);
+    display: inline-block;
+    margin: 30px auto;
+    box-shadow: 0 0 30px rgba(0,255,255,.15);
+}
+
+.qr-box canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+.qr-label {
+    margin-top: 15px;
+    color: #00ffff;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
 /* ---------- FOOTER ---------- */
 
 footer {
@@ -581,6 +606,24 @@ footer span {
     </section>
 
 
+    <!-- ================= QR CODE ================= -->
+
+    <section class="section">
+
+        <div class="code-title">
+            // SHARE_LINK
+        </div>
+
+        <h2>Share Your Birthday 🔗</h2>
+
+        <div class="qr-box">
+            <div id="qrcode"></div>
+            <div class="qr-label">Scan to share the surprise →</div>
+        </div>
+
+    </section>
+
+
     <footer>
 
         SYSTEM MESSAGE:
@@ -748,6 +791,21 @@ function createConfetti() {
         }, 6500);
     }
 }
+
+
+/* ================= QR CODE ================= */
+
+window.addEventListener('load', function() {
+    const currentUrl = window.location.href;
+    new QRCode(document.getElementById("qrcode"), {
+        text: currentUrl,
+        width: 250,
+        height: 250,
+        colorDark: "#00ffff",
+        colorLight: "#050509",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+});
 
 </script>
 
